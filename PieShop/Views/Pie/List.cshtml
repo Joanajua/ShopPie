@@ -1,0 +1,26 @@
+﻿@*@model IEnumerable<PieShop.Model.Pie>*@
+@model PieShop.ViewModel.PiesListViewModel
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" conten="width=device-with, initial-scale=1">
+    <title>Pie Shop</title>
+</head>
+
+<body>
+    @*<h1>@ViewBag.CurrentCategory</h1>*@
+    <h1>@Model.CurrentCategory</h1>
+    @*@foreach (var pie in Model)*@
+    @foreach (var pie in Model.Pies)
+
+    {
+        <div>
+            <h2>@pie.Name</h2>
+            <h3>@pie.Price.ToString("c")</h3>@*"c" is for currency*@
+            <h4>@pie.Category.CategoryName</h4>
+        </div>
+    }
+</body>
+</html>
