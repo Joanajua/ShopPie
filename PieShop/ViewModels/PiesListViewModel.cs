@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PieShop.Model;
 
-namespace PieShop.ViewModel
+namespace PieShop.ViewModels
 {
     public class PiesListViewModel
     {

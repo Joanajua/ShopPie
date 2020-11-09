@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PieShop.Model;
-using PieShop.ViewModel;
+using PieShop.Data;
+using PieShop.ViewModels;
 
 namespace PieShop.Controllers
 {
