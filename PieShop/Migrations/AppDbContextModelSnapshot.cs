@@ -53,7 +53,7 @@ namespace PieShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PieShop.Model.Pie", b =>
+            modelBuilder.Entity("PieShop.Models.Pie", b =>
                 {
                     b.Property<int>("PieId")
                         .ValueGeneratedOnAdd()
@@ -253,9 +253,9 @@ namespace PieShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PieShop.Model.Pie", b =>
+            modelBuilder.Entity("PieShop.Models.Pie", b =>
                 {
-                    b.HasOne("PieShop.Model.Category", "Category")
+                    b.HasOne("PieShop.Models.Category", "Category")
                         .WithMany("Pie")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

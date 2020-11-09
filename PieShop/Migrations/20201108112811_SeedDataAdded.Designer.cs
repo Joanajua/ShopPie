@@ -20,7 +20,7 @@ namespace PieShop.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PieShop.Model.Category", b =>
+            modelBuilder.Entity("PieShop.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace PieShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PieShop.Model.Pie", b =>
+            modelBuilder.Entity("PieShop.Models.Pie", b =>
                 {
                     b.Property<int>("PieId")
                         .ValueGeneratedOnAdd()
@@ -255,9 +255,9 @@ namespace PieShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PieShop.Model.Pie", b =>
+            modelBuilder.Entity("PieShop.Models.Pie", b =>
                 {
-                    b.HasOne("PieShop.Model.Category", "Category")
+                    b.HasOne("PieShop.Models.Category", "Category")
                         .WithMany("Pie")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PieShop.Model
+namespace PieShop.Models
 {
     public class Pie
     {

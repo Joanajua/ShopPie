@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
 
-namespace PieShop.Model
+namespace PieShop.Models
 {
     public class Category
     {
