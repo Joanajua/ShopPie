@@ -34,7 +34,9 @@ namespace PieShop
             //services.AddTransient() -- gives back a new instance every time 
             //services.AddSingleton() -- is going to create a single instance for the entire app and reuse it
             //services.AddScoped() -- Per request, an instance will be created, and will remain active throughout the entire request.
-
+            services.AddScoped<ShoppingCart>(sp=> ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -50,6 +52,7 @@ namespace PieShop
             //For using pictures
             app.UseStaticFiles();
 
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
