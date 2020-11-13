@@ -24,8 +24,9 @@ namespace PieShop.Data
         public static ShoppingCart GetCart(IServiceProvider services)
         {
             // Gains access to the HttpContext session info
-            // The HttpCopntext has all the information about the Http request
-            ISession session = services.GetRequiredService<HttpContextAccessor>().HttpContext.Session;
+            // The HttpContext has all the information about the Http request
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?
+                .HttpContext.Session;
 
             // We get here an instance of the AppDbContext to be able to gain access to the DBSet<ShoppingCartItem> ShoppingCartItems
             var context = services.GetService<AppDbContext>();

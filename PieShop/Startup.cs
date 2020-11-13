@@ -29,14 +29,18 @@ namespace PieShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             //services.AddTransient() -- gives back a new instance every time 
             //services.AddSingleton() -- is going to create a single instance for the entire app and reuse it
             //services.AddScoped() -- Per request, an instance will be created, and will remain active throughout the entire request.
+
             services.AddScoped<ShoppingCart>(sp=> ShoppingCart.GetCart(sp));
+
             services.AddHttpContextAccessor();
             services.AddSession();
+
             services.AddControllersWithViews();
         }
 
@@ -51,8 +55,8 @@ namespace PieShop
             app.UseHttpsRedirection();
             //For using pictures
             app.UseStaticFiles();
-
             app.UseSession();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

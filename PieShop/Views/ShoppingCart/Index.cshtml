@@ -1,0 +1,34 @@
+﻿@using PieShop.Helpers
+@model ShoppingCartViewModel
+
+<h2>Your shopping cart</h2>
+<h4>Here are the delicious pies in your shopping cart.</h4>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Selected amount</th>
+            <th>Pie</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+    {
+        <tr>
+            <th class="text-center">@item.Amount</th>
+            <th class="text-left">@item.Pie.Name</th>
+            <th class="text-right">@item.Pie.Price.ToString("C", Cultures.UnitedKingdom)</th>
+            <th class="text-right">@((item.Amount * item.Pie.Price).ToString("C", Cultures.UnitedKingdom))</th>
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.ShoppingCartTotal.ToString("C", Cultures.UnitedKingdom)
+            </td>
+        </tr>
+    </tfoot>
+</table>
