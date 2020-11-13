@@ -102,6 +102,16 @@ namespace PieShop.Data
                            .ToList();
         }
 
+        public int GetShoppingCartAmountItems()
+        {
+            var totalAmount = _appDbContext.ShoppingCartItems
+                .Where(s => s.ShoppingCartId == ShoppingCartId)
+                .Select(i => i.Amount)
+                .Sum();
+
+            return totalAmount;
+        }
+
         public void ClearCart()
         {
             var shoppingCartItems = _appDbContext.ShoppingCartItems.Where(s => s.ShoppingCartId == ShoppingCartId);

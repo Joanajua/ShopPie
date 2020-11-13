@@ -1,0 +1,13 @@
+﻿@using System.Xml.Schema
+@model ShoppingCartViewModel
+
+<li>
+    <a asp-controller="ShoppingCart" asp-action="Index">
+
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <span id="cart-status">
+            @Model.ShoppingCart.GetShoppingCartAmountItems()
+        </span>
+    </a>
+</li>
+
