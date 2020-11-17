@@ -19,11 +19,13 @@ namespace PieShop.Data
         public void CreateOrder(Order order)
         {
             order.OrderPlacedTime = DateTime.Now;
-            _appDbContext.Orders.Add(order);
 
             //getting the items from the shopping cart
             var shoppingCartItems = _shoppingCart.ShoppingCartItems;
-            
+            order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
+
+            order.OrderDetails = new List<OrderDetail>();
+
             //foreach item create an order detail object
             foreach (var shoppingCartItem in shoppingCartItems)
             {
@@ -31,13 +33,14 @@ namespace PieShop.Data
                 {
                     Amount = shoppingCartItem.Amount,
                     PieId = shoppingCartItem.Pie.PieId,
-                    OrderId = order.OrderId,
                     Price = shoppingCartItem.Pie.Price
                 };
 
                 //Add the order details to the context
-                _appDbContext.OrderDetails.Add(orderDetail);
+                order.OrderDetails.Add(orderDetail);
             }
+
+            _appDbContext.Orders.Add(order);
 
             _appDbContext.SaveChanges();
         }
